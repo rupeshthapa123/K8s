@@ -12,12 +12,14 @@ spec:
       labels:
         app: mysql
     spec:
+      imagePullSecrets:
+        - name: ecr-creds
       containers:
         - name: mysql
           image: 247437911316.dkr.ecr.us-east-1.amazonaws.com/clo835-mysql:latest
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "rootpassword"
+              value: "passwors"
             - name: MYSQL_DATABASE
               value: "employees"
           ports:

@@ -5,8 +5,21 @@ metadata:
   labels:
     app: employees
 spec:
+  imagePullSecrets:
+    - name: ecr-creds
   containers:
-  - name: webapp
-    image: 247437911316.dkr.ecr.us-east-1.amazonaws.com/clo835-webapp:latest
-    ports:
-    - containerPort: 8080
+    - name: webapp
+      image: 247437911316.dkr.ecr.us-east-1.amazonaws.com/clo835-webapp:latest
+      ports:
+        - containerPort: 8080
+      env:
+        - name: DBHOST
+          value: "mysql-service"
+        - name: DBPORT
+          value: "3306"
+        - name: DBUSER
+          value: "root"
+        - name: DBPWD
+          value: "passwors"
+        - name: DATABASE
+          value: "employees"
